@@ -1,8 +1,12 @@
 import React from 'react'
-import Header from './components/Header'
+import NoteHeader from './components/NoteHeader'
+import NoteBody from './components/NoteBody'
 
 export default function App() {
   return (
-    <Header />
+    <>
+      <NoteHeader />
+      <NoteBody />
+    </>
   )
 }

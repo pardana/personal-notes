@@ -22,16 +22,18 @@ class Header extends React.Component {
 
   render() {
     return (
-      <header className="note-app__header">
+      <div className="note-app__header">
         <h1>Notes</h1>
-        <input
-          type="text"
-          name="cari"
-          value={this.state.cari}
-          onChange={this.onSearchHandler}
-          placeholder="Cari catatan..."
-        />
-      </header>
+        <div className="note-search">
+          <input
+            type="text"
+            name="cari"
+            value={this.state.cari}
+            onChange={this.onSearchHandler}
+            placeholder="Cari catatan..."
+          />
+        </div>
+      </div>
     );
   }
 }
