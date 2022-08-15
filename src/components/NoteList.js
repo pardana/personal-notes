@@ -21,6 +21,7 @@ class NoteList extends React.Component {
             id={data.id} 
             body={data.body}
             title={data.title} 
+            archived={data.archived}
             createdAt={data.createdAt}
             {...data} />
         ))}
