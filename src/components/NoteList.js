@@ -15,7 +15,16 @@ class NoteList extends React.Component {
   render() {
     return (
       <div className="notes-list">
-        <NoteItem datas={this.state.datas} />
+        {/* <NoteItem datas={this.state.datas} /> */}
+        {this.state.datas.map((data) => (
+          <NoteItem 
+            key={data.id} 
+            id={data.id} 
+            body={data.body}
+            title={data.title} 
+            createdAt={data.createdAt}
+            {...data} />
+        ))}
       </div>
     );
   }

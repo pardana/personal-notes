@@ -1,18 +1,12 @@
 import React from "react";
 import NoteItemContent from "./NoteItemContent";
+import NoteItemAction from "./NoteItemAction";
 
-export default function NoteItem({ datas }) {
+export default function NoteItem({ key, id, body, title, createdAt }) {
   return (
     <div className="note-item">
-      {datas.map((data) => (
-        <NoteItemContent
-          key={data.id}
-          id={data.id}
-          title={data.title}
-          {...data}
-        />
-        // console.log(data)
-      ))}
+      <NoteItemContent key={key} id={id} body={body} title={title} createdAt={createdAt} />
+      <NoteItemAction />
     </div>
   );
 }
