@@ -6,10 +6,6 @@ import { getInitialData } from "../utils/index";
 class NoteItem extends React.Component {
   constructor(props) {
     super(props);
-
-    this.state = {
-      datas: getInitialData(),
-    };
   }
 
   render() {

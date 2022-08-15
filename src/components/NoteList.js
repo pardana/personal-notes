@@ -19,20 +19,26 @@ class NoteList extends React.Component {
 
   render() {
     return (
-      <div className="notes-list">
-        {this.state.datas.map((data) => (
-          <NoteItem
-            key={data.id}
-            id={data.id}
-            body={data.body}
-            title={data.title}
-            archived={data.archived}
-            createdAt={data.createdAt}
-            onDelete={this.onDeleteHandler}
-            {...data}
-          />
-        ))}
-      </div>
+      <>
+        {this.state.datas.length === 0 ? (
+          <p className="notes-list__empty-message">Tidak ada catatan</p>
+        ) : (
+          <div className="notes-list">
+            {this.state.datas.map((data) => (
+              <NoteItem
+                key={data.id}
+                id={data.id}
+                body={data.body}
+                title={data.title}
+                archived={data.archived}
+                createdAt={data.createdAt}
+                onDelete={this.onDeleteHandler}
+                {...data}
+              />
+            ))}
+          </div>
+        )}
+      </>
     );
   }
 }
