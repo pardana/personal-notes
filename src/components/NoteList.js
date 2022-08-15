@@ -1,46 +1,25 @@
 import React from "react";
 import NoteItem from "./NoteItem";
-import { getInitialData } from "../utils/index";
 
-class NoteList extends React.Component {
-  constructor(props) {
-    super(props);
-
-    //inisialisasi state
-    this.state = {
-      datas: getInitialData(),
-    };
-  }
-
-  onDeleteHandler = (itemId) => {
-    const datas = this.state.datas.filter((data) => data.id !== itemId);
-    this.setState({ datas });
-  };
-
-  render() {
-    return (
-      <>
-        {this.state.datas.length === 0 ? (
-          <p className="notes-list__empty-message">Tidak ada catatan</p>
-        ) : (
-          <div className="notes-list">
-            {this.state.datas.map((data) => (
-              <NoteItem
-                key={data.id}
-                id={data.id}
-                body={data.body}
-                title={data.title}
-                archived={data.archived}
-                createdAt={data.createdAt}
-                onDelete={this.onDeleteHandler}
-                {...data}
-              />
-            ))}
-          </div>
-        )}
-      </>
-    );
-  }
+function NoteList({ datas, onDelete }) {
+  return (
+    <div className="notes-list">
+      {datas
+        .filter((data) => data.archived === false)
+        .map((data) => (
+          <NoteItem
+            key={data.id}
+            id={data.id}
+            body={data.body}
+            title={data.title}
+            archived={data.archived}
+            createdAt={data.createdAt}
+            onDelete={onDelete}
+            {...data}
+          />
+        ))}
+    </div>
+  );
 }
 
 export default NoteList;

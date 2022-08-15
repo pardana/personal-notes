@@ -1,33 +1,25 @@
 import React from "react";
 import NoteItem from "./NoteItem";
-import { getInitialData } from "../utils/index";
 
-class NoteListArsip extends React.Component {
-  constructor(props) {
-    super(props);
-
-    //inisialisasi state
-    this.state = {
-      datas: getInitialData(),
-    };
-  }
-
-  render() {
-    return (
-      <div className="notes-list">
-        {this.state.datas.map((data) => (
-          <NoteItem 
-            key={data.id} 
-            id={data.id} 
+function NoteListArsip({ datas, onDelete }) {
+  return (
+    <div className="notes-list">
+      {datas
+        .filter((data) => data.archived === true)
+        .map((data) => (
+          <NoteItem
+            key={data.id}
+            id={data.id}
             body={data.body}
-            title={data.title} 
+            title={data.title}
             archived={data.archived}
             createdAt={data.createdAt}
-            {...data} />
+            onDelete={onDelete}
+            {...data}
+          />
         ))}
-      </div>
-    );
-  }
+    </div>
+  );
 }
 
 export default NoteListArsip;

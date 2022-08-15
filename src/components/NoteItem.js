@@ -1,33 +1,26 @@
 import React from "react";
 import NoteItemContent from "./NoteItemContent";
 import NoteItemAction from "./NoteItemAction";
-import { getInitialData } from "../utils/index";
 
-class NoteItem extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
-  render() {
-    return (
-      <div className="note-item">
-        <NoteItemContent
-          key={this.props.key}
-          id={this.props.id}
-          body={this.props.body}
-          title={this.props.title}
-          archived={this.props.archived}
-          createdAt={this.props.createdAt}
-        />
-        <NoteItemAction
-          key={this.props.key}
-          id={this.props.id}
-          archived={this.props.archived}
-          onDelete={this.props.onDelete}
-        />
-      </div>
-    );
-  }
+function NoteItem({ key, id, body, title, archived, createdAt, onDelete }) {
+  return (
+    <div className="note-item">
+      <NoteItemContent
+        key={key}
+        id={id}
+        body={body}
+        title={title}
+        archived={archived}
+        createdAt={createdAt}
+      />
+      <NoteItemAction
+        key={key}
+        id={id}
+        archived={archived}
+        onDelete={onDelete}
+      />
+    </div>
+  );
 }
 
 export default NoteItem;
