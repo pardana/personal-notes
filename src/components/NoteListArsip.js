@@ -1,7 +1,7 @@
 import React from "react";
 import NoteItem from "./NoteItem";
 
-function NoteListArsip({ datas, onDelete }) {
+function NoteListArsip({ datas, onDelete, onArchived, label }) {
   return (
     <div className="notes-list">
       {datas
@@ -12,9 +12,10 @@ function NoteListArsip({ datas, onDelete }) {
             id={data.id}
             body={data.body}
             title={data.title}
-            archived={data.archived}
+            onArchived={onArchived}
             createdAt={data.createdAt}
             onDelete={onDelete}
+            label={label}
             {...data}
           />
         ))}

@@ -14,7 +14,12 @@ class NoteItemAction extends React.Component {
         >
           Delete
         </button>
-        <button className="note-item__archive-button">Arsipkan</button>
+        <button
+          onClick={() => this.props.onArchived(this.props.id)}
+          className="note-item__archive-button"
+        >
+          {this.props.label}
+        </button>
       </div>
     );
   }

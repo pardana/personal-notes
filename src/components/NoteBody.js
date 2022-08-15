@@ -14,11 +14,20 @@ class NoteBody extends React.Component {
     };
 
     this.onDeleteHandler = this.onDeleteHandler.bind(this);
+    this.onArchivedHandler = this.onArchivedHandler.bind(this);
   }
 
   onDeleteHandler = (itemId) => {
     const datas = this.state.datas.filter((data) => data.id !== itemId);
     this.setState({ datas });
+  };
+
+  onArchivedHandler = (itemId) => {
+    const newNotes = [...this.state.datas];
+    const noteIndex = this.state.datas.findIndex((data) => data.id === itemId);
+
+    newNotes[noteIndex].archived = !newNotes[noteIndex].archived;
+    this.setState({ datas: newNotes });
   };
 
   render() {
@@ -31,7 +40,12 @@ class NoteBody extends React.Component {
         <NoteInput />
         <h2>Catatan Aktif</h2>
         {notesAktif.length !== 0 && notesAktif ? (
-          <NoteList datas={datas} onDelete={this.onDeleteHandler} />
+          <NoteList
+            datas={datas}
+            onDelete={this.onDeleteHandler}
+            onArchived={this.onArchivedHandler}
+            label='Arsipkan'
+          />
         ) : (
           <p className="notes-list__empty-message">Tidak ada catatan</p>
         )}
@@ -39,7 +53,12 @@ class NoteBody extends React.Component {
         <h2>Arsip</h2>
 
         {notesArsip.length !== 0 ? (
-          <NoteListArsip datas={datas} onDelete={this.onDeleteHandler} />
+          <NoteListArsip
+            datas={datas}
+            onDelete={this.onDeleteHandler}
+            onArchived={this.onArchivedHandler}
+            label='Pindahkan'
+          />
         ) : (
           <p className="notes-list__empty-message">Tidak ada catatan</p>
         )}

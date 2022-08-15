@@ -2,7 +2,7 @@ import React from "react";
 import NoteItemContent from "./NoteItemContent";
 import NoteItemAction from "./NoteItemAction";
 
-function NoteItem({ key, id, body, title, archived, createdAt, onDelete }) {
+function NoteItem({ key, id, body, title, onArchived, createdAt, onDelete, label }) {
   return (
     <div className="note-item">
       <NoteItemContent
@@ -10,14 +10,15 @@ function NoteItem({ key, id, body, title, archived, createdAt, onDelete }) {
         id={id}
         body={body}
         title={title}
-        archived={archived}
+        onArchived={onArchived}
         createdAt={createdAt}
       />
       <NoteItemAction
         key={key}
         id={id}
-        archived={archived}
+        onArchived={onArchived}
         onDelete={onDelete}
+        label={label}
       />
     </div>
   );
