@@ -12,18 +12,25 @@ class NoteList extends React.Component {
     };
   }
 
+  onDeleteHandler = (itemId) => {
+    const datas = this.state.datas.filter((data) => data.id !== itemId);
+    this.setState({ datas });
+  };
+
   render() {
     return (
       <div className="notes-list">
         {this.state.datas.map((data) => (
-          <NoteItem 
-            key={data.id} 
-            id={data.id} 
+          <NoteItem
+            key={data.id}
+            id={data.id}
             body={data.body}
-            title={data.title} 
+            title={data.title}
             archived={data.archived}
             createdAt={data.createdAt}
-            {...data} />
+            onDelete={this.onDeleteHandler}
+            {...data}
+          />
         ))}
       </div>
     );

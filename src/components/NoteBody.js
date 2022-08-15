@@ -10,7 +10,7 @@ export default function Body() {
       <h2>Catatan Aktif</h2>
       <NoteList />
       <h2>Arsip</h2>
-      <NoteListArsip />
+      {/* <NoteListArsip /> */}
     </div>
-  )
+  );
 }
