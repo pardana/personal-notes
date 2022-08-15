@@ -26,21 +26,21 @@ class NoteInput extends React.Component {
   onCatatanHandler(event) {
     this.setState(() => {
       return {
-        judul: event.target.value,
+        catatan: event.target.value,
       };
     });
   }
 
   onSubmitEventHandler(event) {
     event.preventDefault();
-    this.props.addContact(this.state);
+    this.props.addNote(this.state);
   }
 
   render() {
     return (
       <div className="note-input">
-        <h2>Buat Catatan</h2>
         <form onSubmit={this.onSubmitEventHandler}>
+          <h2>Buat Catatan</h2>
           <p className="note-input__title__char-limit">Sisa karakter : 50</p>
           <input
             type="text"

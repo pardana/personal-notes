@@ -15,6 +15,7 @@ class NoteBody extends React.Component {
 
     this.onDeleteHandler = this.onDeleteHandler.bind(this);
     this.onArchivedHandler = this.onArchivedHandler.bind(this);
+    this.onAddNoteHandler = this.onAddNoteHandler.bind(this);
   }
 
   onDeleteHandler = (itemId) => {
@@ -30,6 +31,23 @@ class NoteBody extends React.Component {
     this.setState({ datas: newNotes });
   };
 
+  onAddNoteHandler({ judul, catatan }) {
+    this.setState((prevState) => {
+      return {
+        datas: [
+          ...prevState.datas,
+          {
+            id: +new Date(),
+            title: judul,
+            body: catatan,
+            createdAt: new Date(),
+            archived: false,
+          },
+        ],
+      };
+    });
+  }
+
   render() {
     const { datas } = this.state;
     const notesAktif = datas.filter((data) => data.archived === false);
@@ -37,14 +55,14 @@ class NoteBody extends React.Component {
 
     return (
       <div className="note-app__body">
-        <NoteInput />
+        <NoteInput addNote={this.onAddNoteHandler} />
         <h2>Catatan Aktif</h2>
         {notesAktif.length !== 0 && notesAktif ? (
           <NoteList
             datas={datas}
             onDelete={this.onDeleteHandler}
             onArchived={this.onArchivedHandler}
-            label='Arsipkan'
+            label="Arsipkan"
           />
         ) : (
           <p className="notes-list__empty-message">Tidak ada catatan</p>
@@ -57,7 +75,7 @@ class NoteBody extends React.Component {
             datas={datas}
             onDelete={this.onDeleteHandler}
             onArchived={this.onArchivedHandler}
-            label='Pindahkan'
+            label="Pindahkan"
           />
         ) : (
           <p className="notes-list__empty-message">Tidak ada catatan</p>

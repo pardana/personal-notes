@@ -10,7 +10,6 @@ function NoteItem({ key, id, body, title, onArchived, createdAt, onDelete, label
         id={id}
         body={body}
         title={title}
-        onArchived={onArchived}
         createdAt={createdAt}
       />
       <NoteItemAction

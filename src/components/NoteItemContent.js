@@ -1,7 +1,7 @@
 import React from "react";
 import { showFormattedDate } from "../utils/index";
 
-function NoteItemContent({ id, body, title, archived, createdAt }) {
+function NoteItemContent({ body, title, createdAt }) {
   return (
     <div className="note-item__content">
       <h3 className="note-item__title">{title}</h3>
