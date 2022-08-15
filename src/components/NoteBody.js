@@ -1,6 +1,7 @@
 import React from "react";
 import NoteInput from "./NoteInput";
 import NoteList from "./NoteList";
+import NoteListArsip from "./NoteListArsip";
 
 export default function Body() {
   return (
@@ -8,6 +9,8 @@ export default function Body() {
       <NoteInput />
       <h2>Catatan Aktif</h2>
       <NoteList />
+      <h2>Arsip</h2>
+      <NoteListArsip />
     </div>
   )
 }

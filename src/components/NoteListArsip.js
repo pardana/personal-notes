@@ -2,7 +2,7 @@ import React from "react";
 import NoteItem from "./NoteItem";
 import { getInitialData } from "../utils/index";
 
-class NoteList extends React.Component {
+class NoteListArsip extends React.Component {
   constructor(props) {
     super(props);
 
@@ -29,4 +29,4 @@ class NoteList extends React.Component {
   }
 }
 
-export default NoteList;
+export default NoteListArsip;
