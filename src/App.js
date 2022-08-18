@@ -2,6 +2,7 @@ import React from "react";
 import NoteHeader from "./components/NoteHeader";
 import NoteBody from "./components/NoteBody";
 import { getInitialData } from "../src/utils";
+import NoteFooter from "./components/NoteFooter";
 
 class App extends React.Component {
   constructor(props) {
@@ -79,6 +80,7 @@ class App extends React.Component {
           notesAktif={notesAktif}
           notesArsip={notesArsip}
         />
+        <NoteFooter />
       </>
     );
   }
