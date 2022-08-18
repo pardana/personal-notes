@@ -67,11 +67,6 @@ class App extends React.Component {
     const { datas } = this.state;
     const notesAktif = datas.filter((data) => data.archived === false);
     const notesArsip = datas.filter((data) => data.archived === true);
-    const searchNotes = !this.state.search
-      ? this.state.notes
-      : this.state.notes.filter((note) =>
-          note.title.toLowerCase().match(this.state.search)
-        );
 
     return (
       <>

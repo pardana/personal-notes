@@ -8,6 +8,7 @@ class NoteInput extends React.Component {
     this.state = {
       judul: "",
       catatan: "",
+      titleChar: 50,
     };
 
     this.onJudulHandler = this.onJudulHandler.bind(this);
@@ -18,7 +19,7 @@ class NoteInput extends React.Component {
   onJudulHandler(event) {
     this.setState(() => {
       return {
-        judul: event.target.value,
+        judul: event.target.value.slice(0, this.state.titleChar),
       };
     });
   }
@@ -34,6 +35,13 @@ class NoteInput extends React.Component {
   onSubmitEventHandler(event) {
     event.preventDefault();
     this.props.addNote(this.state);
+    this.setState(() => {
+      return {
+        judul: "",
+        catatan: "",
+        titleChar: 50,
+      };
+    });
   }
 
   render() {
@@ -41,7 +49,9 @@ class NoteInput extends React.Component {
       <div className="note-input">
         <form onSubmit={this.onSubmitEventHandler}>
           <h2>Buat Catatan</h2>
-          <p className="note-input__title__char-limit">Sisa karakter : 50</p>
+          <p className="note-input__title__char-limit">
+            Sisa karakter : {this.state.titleChar - this.state.judul.length}
+          </p>
           <input
             type="text"
             name="judul"
